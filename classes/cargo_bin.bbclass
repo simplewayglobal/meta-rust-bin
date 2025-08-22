@@ -3,7 +3,7 @@ inherit rust_bin-common
 # Many crates rely on pkg-config to find native versions of their libraries for
 # linking - do the simple thing and make it generally available.
 DEPENDS:append = "\
-    ${@ "cargo-bin-cross-${TARGET_ARCH}" if d.getVar('TARGET_ARCH') != "${BUILD_ARCH}" else "cargo-bin-native" }    \
+    ${@ "cargo-bin-cross-${TARGET_ARCH} rust-bin-cross-${TARGET_ARCH}" if d.getVar('TARGET_ARCH') != "${BUILD_ARCH}" else "cargo-bin-native rust-bin-native" }    \
     pkgconfig-native \
 "
 
